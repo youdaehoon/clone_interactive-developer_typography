@@ -1,4 +1,5 @@
 const FRICTION = 0.86;
+const COLOR_SPEED = 0.12;
 const MOVE_SPEED = 0.1;
 
 export class Particle {
@@ -16,9 +17,17 @@ export class Particle {
     this.vx = 0;
     this.vy = 0;
     this.radius = 10;
+
+    this.savedRgb = 0xf3316e;
+    this.rgb = 0xf3316e;
+  }
+
+  collide() {
+    this.rgb = 0x451966;
   }
 
   draw() {
+    this.rgb += (this.savedRgb - this.rgb) * COLOR_SPEED;
     this.x += (this.savedX - this.x) * MOVE_SPEED;
     this.y += (this.savedY - this.y) * MOVE_SPEED;
     //particle의 위치 변화가 멀수록 더 빠르게
@@ -30,5 +39,6 @@ export class Particle {
     this.y += this.vy;
     this.sprite.x = this.x;
     this.sprite.y = this.y;
+    this.sprite.tint = this.rgb;
   }
 }

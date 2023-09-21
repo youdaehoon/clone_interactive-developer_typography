@@ -26,7 +26,7 @@ export class Visual {
       rotation: false,
       scale: false,
       uvs: false,
-      tint: false,
+      tint: true,
     });
     stage.addChild(this.container);
 
@@ -53,6 +53,7 @@ export class Visual {
         item.vx -= ax;
         item.vy -= ay;
         //마우스에서 설정한 radius 표면을 따라 움직이도록 하는 코드
+        item.collide();
       }
       item.draw();
     }
