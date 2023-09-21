@@ -52,6 +52,7 @@ export class Visual {
         const ay = ty - this.mouse.y;
         item.vx -= ax;
         item.vy -= ay;
+        //마우스에서 설정한 radius 표면을 따라 움직이도록 하는 코드
       }
       item.draw();
     }
